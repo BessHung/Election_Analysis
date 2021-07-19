@@ -5,9 +5,9 @@
 # The winner of the election based on popular vote
 
 #Direct Path to the File
-# import csv
+#  import csv
 
-# file_to_load = 'Resources\election_results.csv'
+#  file_to_load = 'Resources\election_results.csv'
 
 # with open(file_to_load,encoding='utf-8') as election_data:
 #     print(election_data)
@@ -54,14 +54,29 @@ with open(file_to_load) as election_data:
             candidate_options.append(candidate_name)
             # start counting candidate's votes
             candidate_votes[candidate_name] = 0
-
+        # Add a vote to that candidate's count
         candidate_votes[candidate_name] += 1
+
+# Save the results to our text file.
+with open(file_to_save,'w') as txt_file:
+    # Print the final vote count to the terminal.
+    election_results = (
+        f"\nElection Result\n"
+        f"-----------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-----------------------------\n"
+    )
+
+    print(election_results, end='')
+    # Save the final vote count to the text file.
+    txt_file.write(election_results)
+
 
     #The percentage of candidate's votes
     for candidate_name in candidate_votes:
         votes = candidate_votes[candidate_name]
         vote_percentage = float(votes) / float(total_votes) *100
-        print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        #print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
 
         #Determine the winning vote count and candidate
         if votes > winning_count and vote_percentage>winning_percentage:
@@ -75,15 +90,11 @@ with open(file_to_load) as election_data:
         f"Winning Percentage: {winning_percentage:.1f}%\n"
         f"--------------------------"
     )
-    print(winning_candidate_summary)
+    #print(winning_candidate_summary)
 
 
-#print(candidate_votes)
-#print(candidate_options)
-#print(total_votes)
+    # Using the with statement open the file as a text file.
+    # with open(file_to_save,'w') as txt_file:
 
-# Using the with statement open the file as a text file.
-# with open(file_to_save,'w') as txt_file:
-
-#     txt_file.write('Counties in the Election\n--------------\nArapahoe\nDenver\nJefferson')
+    #     txt_file.write('Counties in the Election\n--------------\nArapahoe\nDenver\nJefferson')
 
