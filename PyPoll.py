@@ -4,17 +4,8 @@
 # Percentage of votes each candidate won
 # The winner of the election based on popular vote
 
-#Direct Path to the File
-#  import csv
 
-#  file_to_load = 'Resources\election_results.csv'
-
-# with open(file_to_load,encoding='utf-8') as election_data:
-#     print(election_data)
-
-
-#Indirect Path to the File
-
+# Add dependencies.
 import csv
 import os
 # Assign a variable for the file to load and save the file.
@@ -71,18 +62,23 @@ with open(file_to_save,'w') as txt_file:
     # Save the final vote count to the text file.
     txt_file.write(election_results)
 
-
     #The percentage of candidate's votes
     for candidate_name in candidate_votes:
         votes = candidate_votes[candidate_name]
         vote_percentage = float(votes) / float(total_votes) *100
-        #print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
+        # Print the final vote count to the terminal.
+        print(candidate_results)
+        # Save candidate results to the text file.
+        txt_file.write(candidate_results)
 
         #Determine the winning vote count and candidate
-        if votes > winning_count and vote_percentage>winning_percentage:
+        if votes > winning_count and vote_percentage > winning_percentage:
             winning_count = votes
             winning_percentage = vote_percentage
             winning_candidate = candidate_name
+    # Print the winning candidate's results to the terminal.
     winning_candidate_summary = (
         f"--------------------------\n"
         f"Winner: {winning_candidate}\n"
@@ -90,11 +86,7 @@ with open(file_to_save,'w') as txt_file:
         f"Winning Percentage: {winning_percentage:.1f}%\n"
         f"--------------------------"
     )
-    #print(winning_candidate_summary)
-
-
-    # Using the with statement open the file as a text file.
-    # with open(file_to_save,'w') as txt_file:
-
-    #     txt_file.write('Counties in the Election\n--------------\nArapahoe\nDenver\nJefferson')
+    print(winning_candidate_summary)
+    # Save the winning candidate's name to the text file.
+    txt_file.write(winning_candidate_summary)
 
