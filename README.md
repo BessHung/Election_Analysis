@@ -67,7 +67,7 @@ Using the script below to read each row of the csv file and get the list of the 
         # 5: Add a vote to that county's vote count.
         county_votes[county_name] += 1
 ```
-Using the script below to read and calculate the data from the list and dictionary. In the first part of repetition statement, `For` loop, it retrieves the votes count and calculates the percentage for each county from the dictionary, then print out the result of each item. Next, inside the for loop, using conditional statements, `If`, to get the largest number of the county. To sum up, the script can be used in grabbing the data, doing some math for each item from the dictionary. Further, return the expectation data the by using if-statements.
+Using the script below to read and calculate the data from the list and dictionary. In the first part of repetition statement, `For` loop, it retrieves the votes count and calculates the percentage for each county from the dictionary, then print out the result of each item. Next, inside the for loop, using conditional statements, `If`, to get the largest number of the county. To sum up, the script can be used in grabbing the data, doing some math for each item from the dictionary. Further, return the expectation data by using if-statements.
 ```Python
     # 6a: Write a for loop to get the county from the county dictionary
     for county_name in county_votes:
